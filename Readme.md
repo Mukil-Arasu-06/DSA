@@ -18,17 +18,20 @@ nums = [1, 2, 3, 1]
 |         4 |     1 | `{1, 2, 3}`   | **Yes**       | Return `True` | `{1, 2, 3}`  |
 
 
-How It Works
+##How It Works
+
 Create an empty set called seen.
 Iterate through every number in nums.
 Check whether the number is already inside seen.
 If it is already there, return True.
 Otherwise, add the number to seen.
 If the loop finishes, return False.
-Complexity
+
+##Complexity
 Type	Complexity
 Time	O(n)
 Space	O(n)
-DSA Pattern
+
+##DSA Pattern
 
 Array → Detect Duplicate → Hash Set → Iterate Once
