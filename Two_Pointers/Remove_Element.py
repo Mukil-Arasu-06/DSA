@@ -33,3 +33,15 @@ class Solution:
                 j += 1
 
         return j
+
+
+
+
+
+        Sure. For nums = [3, 2, 2, 3] and val = 3, here is the iteration clearly:
+
+Iteration	i	nums[i]	Check nums[i] != val	j before	Action	nums after	j after
+1	0	3	3 != 3 ❌	0	Skip	[3, 2, 2, 3]	0
+2	1	2	2 != 3 ✅	0	nums[0] = 2	[2, 2, 2, 3]	1
+3	2	2	2 != 3 ✅	1	nums[1] = 2	[2, 2, 2, 3]	2
+4	3	3	3 != 3 ❌	2	Skip	[2, 2, 2, 3]	2
