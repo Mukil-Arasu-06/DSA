@@ -1,0 +1,237 @@
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        k=0 
+        for right in range(len(nums)):
+            if k < 2 or nums[right] != nums[k-2]:
+                nums[k] = nums[right]
+                k += 1 
+        return k
+
+
+
+#         3. Full iteration
+
+# Let's use:
+
+# nums = [1, 1, 1, 2, 2, 3]
+
+# Initially:
+
+# k = 0
+# 🔵 Iteration 1
+# right = 0
+# nums[right] = 1
+# k = 0
+
+# Condition:
+
+# k < 2
+
+# is true.
+
+# So:
+
+# nums[k] = nums[right]
+
+# means:
+
+# nums[0] = nums[0]
+#        1     1
+
+# Then:
+
+# k = 1
+
+# Array:
+
+# [1, 1, 1, 2, 2, 3]
+#  ↑
+# valid
+
+# Valid portion:
+
+# [1]
+# 🔵 Iteration 2
+# right = 1
+# nums[right] = 1
+# k = 1
+
+# Condition:
+
+# k < 2
+
+# True.
+
+# Put it at k:
+
+# nums[1] = nums[1]
+
+# Then:
+
+# k = 2
+
+# Valid portion:
+
+# [1, 1]
+# 🔵 Iteration 3 ⭐ Important
+# right = 2
+# nums[right] = 1
+# k = 2
+
+# Now:
+
+# k < 2
+
+# False.
+
+# So we check:
+
+# nums[right] != nums[k - 2]
+
+# Substitute:
+
+# nums[2] != nums[0]
+
+
+# 1 != 1
+
+# False ❌
+
+# Therefore we don't copy this 1.
+
+# k stays 2
+
+# Valid portion remains:
+
+# [1, 1]
+
+# This is how the third 1 gets ignored.
+
+# 🔵 Iteration 4
+# right = 3
+# nums[right] = 2
+# k = 2
+
+# Check:
+
+# nums[3] != nums[0]
+
+
+# 2 != 1
+
+# True ✅
+
+# So:
+
+# nums[2] = nums[3]
+
+# Array becomes:
+
+# [1, 1, 2, 2, 2, 3]
+#        ↑
+#        written here
+
+# Then:
+
+# k = 3
+
+# Valid portion:
+
+# [1, 1, 2]
+# 🔵 Iteration 5
+# right = 4
+# nums[right] = 2
+# k = 3
+
+# Check:
+
+# nums[4] != nums[1]
+
+
+# 2 != 1
+
+# True ✅
+
+# So:
+
+# nums[3] = nums[4]
+
+# Array:
+
+# [1, 1, 2, 2, 2, 3]
+#           ↑
+
+# Then:
+
+# k = 4
+
+# Valid portion:
+
+# [1, 1, 2, 2]
+# 🔵 Iteration 6
+# right = 5
+# nums[right] = 3
+# k = 4
+
+# Check:
+
+# nums[5] != nums[2]
+
+
+# 3 != 2
+
+# True ✅
+
+# So:
+
+# nums[4] = nums[5]
+
+# Array:
+
+# [1, 1, 2, 2, 3, 3]
+#              ↑
+
+# Then:
+
+# k = 5
+
+# Valid portion:
+
+# [1, 1, 2, 2, 3]
+
+# 5. The most important line
+# nums[right] != nums[k - 2]
+
+# Why k - 2?
+
+# Because we want to allow 2 copies, but reject the third copy.
+
+# For example:
+
+# [1, 1, 1]
+
+# When we see the third 1:
+
+# current = 1
+
+
+# nums[k - 2] = 1
+
+# So:
+
+# 1 != 1
+
+# is false → reject it.
+
+# But when we see a new number:
+
+# [1, 1, 2]
+
+# we get:
+
+# 2 != 1
+
+# true → accept it.
+
+# 🧠 Remember this pattern
+# if k < 2 or nums[right] != nums[k - 2]:
